@@ -56,12 +56,12 @@ export const useProductStore = defineStore('product', {
       this.clearCart()
     },
 
-   // 商品を削除する
-    deleteItem(product) {
+    // 商品を 1 つだけ削除（数量を 0 にリセット）
+    removeFromCart(product) {
       const item = this.products.find(p => p.id === product)
       if (item) {
         item.quantity = 0
       }
-    }
+    },
   }
 })

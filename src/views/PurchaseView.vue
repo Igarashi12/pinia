@@ -27,7 +27,11 @@ const handlePurchase = async () => {
   }, 2000)
 }
 
-const deliteItem = (id) => {store.deliteItem(id)}
+// 商品を削除する処理
+const removeItem = (id) => {
+  store.removeFromCart(id)
+}
+
 </script>
 
 <template>
@@ -57,15 +61,12 @@ const deliteItem = (id) => {store.deliteItem(id)}
               <div class="flex-grow-1 text-left">
                 <div class="text-h6">{{ item.name }}</div>
                 <div class="text-subtitle-2">{{ item.price }}円 × {{ item.quantity }}個</div>
-                <!-- 購入ボタン -->
-                    <div class="text-right mt-4">
-                    <v-btn
-                        icon="mdi-delete"
-                        color="error"
-                        @click="deliteItem"
-                    >
-                    </v-btn>
-                    </div>
+                <!-- ゴミ箱アイコン -->
+                <v-btn
+                icon="mdi-delete"
+                color="error"
+                @click="removeItem(item.id)"
+                ></v-btn>
               </div>
 
             </v-card>
